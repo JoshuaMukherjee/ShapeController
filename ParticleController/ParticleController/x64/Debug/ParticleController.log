@@ -1,8 +1,10 @@
 ﻿  Example.cpp
-C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(8,19): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(8,25): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(8,30): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(15,19): warning C4305: '+=': truncation from 'double' to 'float'
-  ParticleController.cpp
-  Generating Code...
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(11,8): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(12,6): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(12,11): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(13,4): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(13,9): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(13,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(14,6): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\Example.cpp(14,11): warning C4305: 'initializing': truncation from 'double' to 'float'
   ParticleController.vcxproj -> C:\Users\joshu\Documents\ShapeController\ParticleController\x64\Debug\ParticleController.exe

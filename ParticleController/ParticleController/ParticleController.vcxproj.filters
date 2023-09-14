@@ -35,5 +35,8 @@
     <ClInclude Include="Helper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

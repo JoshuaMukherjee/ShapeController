@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="Helper.hpp" />
     <ClInclude Include="ParticleController.hpp" />
+    <ClInclude Include="Shapes.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -59,3 +59,11 @@ void ParticleController::updateParticle(float* pos, int N) {
 		delete solver;
 	}
 
+	void ParticleController::moveParticleAlongFrames(std::vector<float*> frames, int N) {
+		for (auto& frame : frames) {
+			this->updateParticle(frame, N);
+			this->printPos(0);
+			this->UpdateBoard();
+		}
+	}
+

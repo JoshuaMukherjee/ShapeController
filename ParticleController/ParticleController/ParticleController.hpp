@@ -17,4 +17,5 @@ public:
 	void printPos(int N);
 	void UpdateBoard();
 	void close();
+	void moveParticleAlongFrames(std::vector<float*> frames, int N);
 };

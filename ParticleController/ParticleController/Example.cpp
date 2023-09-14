@@ -1,22 +1,31 @@
 #include "ParticleController.hpp"
 #include "Helper.hpp"
+#include "Shapes.hpp"
 #include <stdio.h>
+#include <vector>
 
 
 int main() {
 	ParticleController* Controller = new ParticleController(1);
-	float pos[] = { -0.01,-0.01,0.12 };
-	Controller->updateParticle(pos, 0);
+	float points[][3] = {
+		{0,0,0.12},
+		{0,0.02,0.12},
+		{0.01,0.02,0.12},
+		{0,0.02,0.10}
+	};
+
+	Controller->updateParticle(points[0], 0);
 	Controller->printPos(0);
 	Controller->UpdateBoard();
+
+	printf("Starting");
 	WaitforX();
 	printf("Moving...");
-	for (int i = 0; i < 100; i++) {
-		pos[1] += 0.0001;
-		Controller->updateParticle(pos, 0);
-		Controller->UpdateBoard();
-	}
+	std::vector<float*> frames = CreatePath(points, 4);
+	Controller->moveParticleAlongFrames(frames, 0);
+
 	printf("Done");
 	WaitforX();
+
 	Controller->close();
 }
