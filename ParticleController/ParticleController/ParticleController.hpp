@@ -4,6 +4,7 @@
 #include <GSPAT_SolverV2.h>
 #include <conio.h>
 #include <Windows.h>
+#include <stdio.h>
 
 class ParticleController {
 	int particleN;

@@ -2,6 +2,8 @@
 
 
 ParticleController::ParticleController(int particleNin, int B1, int B2) {
+		
+		
 		particleN = particleNin;
 		positions = new float[4 * particleN];
 		amplitude = new float[particleN];
@@ -66,4 +68,6 @@ void ParticleController::updateParticle(float* pos, int N) {
 			this->UpdateBoard();
 		}
 	}
+
+	
 
