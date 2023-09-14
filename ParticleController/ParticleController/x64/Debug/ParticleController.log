@@ -1,0 +1,4 @@
+﻿  ParticleController.cpp
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\ParticleController.cpp(87,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshu\Documents\ShapeController\ParticleController\ParticleController\ParticleController.cpp(93,19): warning C4305: '+=': truncation from 'double' to 'float'
+  ParticleController.vcxproj -> C:\Users\joshu\Documents\ShapeController\ParticleController\x64\Debug\ParticleController.exe
