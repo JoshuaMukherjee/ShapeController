@@ -1,5 +1,9 @@
 #include "Helper.hpp"
 
+#include <iostream>
+#include <iterator>
+#include <algorithm>
+
 
 void WaitforX() {
 	bool finished = false;
@@ -11,4 +15,14 @@ void WaitforX() {
 			break;
 		}
 	}
+}
+
+ 
+
+void printArray(float data[]) {
+	using namespace std;
+	for (int i = sizeof(data) / sizeof(data[0]); i >= 0; i--) {
+		printf("%f ", data[i]);
+	}
+	printf("\n");
 }

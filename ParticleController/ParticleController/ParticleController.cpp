@@ -1,4 +1,5 @@
 #include "ParticleController.hpp"
+#include "Helper.hpp"
 
 
 ParticleController::ParticleController(int particleNin, int B1, int B2) {
@@ -15,7 +16,7 @@ ParticleController::ParticleController(int particleNin, int B1, int B2) {
 		if (!driver->connect(AsierInho::BensDesign, B1, B2))
 			printf("Failed to connect to board.");
 
-		solver = GSPAT_V2::createSolver(512);
+		solver = GSPAT_IBP::createSolver(512);
 
 		float transducerPositions[512 * 3], transducerNormals[512 * 3], amplitudeAdjust[512];
 		int mappings[512], phaseDelays[512], numDiscreteLevels;
@@ -36,13 +37,15 @@ void ParticleController::updateParticle(float* pos, int N) {
 
 	}
 
+
 	void ParticleController::printPos(int N) {
 		printf("Particle %d at %f, %f, %f \n", N, positions[4 * N], positions[4 * N + 1], positions[4 * N + 2]);
 	}
 
-	void ParticleController::UpdateBoard(){
-		float m1[] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
-		GSPAT::Solution* solution = solver->createSolution(particleN, 1, false, positions, amplitude, m1, m1);
+	void ParticleController::UpdateBoard(float m1[], float m2[]) {
+		
+		printf("%f, %f, %f, %f, %f, %f, %f, %f \n", positions[0], positions[1], positions[2], positions[3], positions[4], positions[5], positions[6], positions[7]);
+		GSPAT::Solution* solution = solver->createSolution(particleN, 1, false, positions, amplitude, m1, m2);
 
 		solver->compute(solution);
 		unsigned char* msg;
@@ -61,11 +64,23 @@ void ParticleController::updateParticle(float* pos, int N) {
 		delete solver;
 	}
 
-	void ParticleController::moveParticleAlongFrames(std::vector<float*> frames, int N) {
+	void ParticleController::moveParticleAlongFrames(std::vector<float*> frames, int N, float m1[], float m2[]) {
 		for (auto& frame : frames) {
 			this->updateParticle(frame, N);
-			this->printPos(0);
-			this->UpdateBoard();
+			//this->printPos(N);
+			this->UpdateBoard(m1,m2);
+		}
+	}
+
+	void ParticleController::moveManyParticlesAlongFrames(std::initializer_list<std::vector<float*>> particleFrames, float m1[], float m2[]) {
+		float* frame;
+		for (int i = 0; i < size(particleFrames.begin()[0]); i++) {
+			for (int N = 0; N < size(particleFrames); N++) {
+				//printf("%d,%d\n", i, N);
+				frame = particleFrames.begin()[N][i];
+				this->updateParticle(frame, N);
+			}
+			this->UpdateBoard(m1,m2);
 		}
 	}
 

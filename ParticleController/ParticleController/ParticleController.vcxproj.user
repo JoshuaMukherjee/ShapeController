@@ -4,4 +4,7 @@
     <LocalDebuggerWorkingDirectory>$(LIBS_HOME)\bin\$(Platform)</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup>
+    <ShowAllFiles>true</ShowAllFiles>
+  </PropertyGroup>
 </Project>

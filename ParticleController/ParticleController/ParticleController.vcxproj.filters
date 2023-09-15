@@ -21,10 +21,10 @@
     <ClCompile Include="Shapes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Example.cpp">
+    <ClCompile Include="Helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Helper.cpp">
+    <ClCompile Include="MultiParticleExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

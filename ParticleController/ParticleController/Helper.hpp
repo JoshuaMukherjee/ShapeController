@@ -3,3 +3,5 @@
 
 
 void WaitforX();
+
+void printArray(float a[]);
