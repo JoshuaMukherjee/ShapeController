@@ -16,7 +16,7 @@ ParticleController::ParticleController(int particleNin, int B1, int B2) {
 		if (!driver->connect(AsierInho::BensDesign, B1, B2))
 			printf("Failed to connect to board.");
 
-		solver = GSPAT_IBP::createSolver(512);
+		solver = GSPAT_V2::createSolver(512);
 
 		float transducerPositions[512 * 3], transducerNormals[512 * 3], amplitudeAdjust[512];
 		int mappings[512], phaseDelays[512], numDiscreteLevels;
@@ -44,7 +44,7 @@ void ParticleController::updateParticle(float* pos, int N) {
 
 	void ParticleController::UpdateBoard(float m1[], float m2[]) {
 		
-		printf("%f, %f, %f, %f, %f, %f, %f, %f \n", positions[0], positions[1], positions[2], positions[3], positions[4], positions[5], positions[6], positions[7]);
+		//printf("%f, %f, %f, %f, %f, %f, %f, %f,%f, %f, %f, %f \n", positions[0], positions[1], positions[2], positions[3], positions[4], positions[5], positions[6], positions[7], positions[8], positions[9], positions[10], positions[11]);
 		GSPAT::Solution* solution = solver->createSolution(particleN, 1, false, positions, amplitude, m1, m2);
 
 		solver->compute(solution);
@@ -83,6 +83,7 @@ void ParticleController::updateParticle(float* pos, int N) {
 			this->UpdateBoard(m1,m2);
 		}
 	}
+
 
 	
 

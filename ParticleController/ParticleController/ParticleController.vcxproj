@@ -130,8 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="circles.cpp" />
     <ClCompile Include="Helper.cpp" />
-    <ClCompile Include="MultiParticleExample.cpp" />
     <ClCompile Include="ParticleController.cpp" />
     <ClCompile Include="Shapes.cpp" />
   </ItemGroup>

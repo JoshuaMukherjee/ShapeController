@@ -24,7 +24,7 @@
     <ClCompile Include="Helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MultiParticleExample.cpp">
+    <ClCompile Include="circles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
