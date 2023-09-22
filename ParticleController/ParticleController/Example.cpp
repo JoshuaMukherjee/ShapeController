@@ -4,9 +4,36 @@
 #include <stdio.h>
 #include <vector>
 
+#include <stdlib.h>
+#include <signal.h>
+
+int x = 0;
+
+
+BOOL WINAPI ConsoleHandler(DWORD dwType)
+{
+	switch (dwType) {
+	case CTRL_C_EVENT:
+		printf("ctrl-c\n");
+		x = 1;
+		break;
+	case CTRL_BREAK_EVENT:
+		printf("break\n");
+		break;
+	default:
+		printf("Some other event\n");
+	}
+	return TRUE;
+}
 
 
 int main() {
+
+	if (!SetConsoleCtrlHandler((PHANDLER_ROUTINE)ConsoleHandler, TRUE)) {
+		printf("Unable to install handler!\n");
+		return EXIT_FAILURE;
+	}
+
 
 	ParticleController* Controller = new ParticleController(1);
 	float m[] = { 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
@@ -22,7 +49,9 @@ int main() {
 		{0.01,-0.02,0.12}
 	};
 
-	Controller->updateParticle(points[0], 0);
+	float** pointsA = copyArrayToPointers(points, 9);
+
+	Controller->updateParticle(pointsA[0], 0);
 	Controller->printPos(0);
 	Controller->UpdateBoard(m,m);
 
@@ -30,10 +59,10 @@ int main() {
 	WaitforX();
 	printf("Moving...");
 
-	std::vector<float*> frames = CreatePath(points, 9, 500);
-
-	Controller->moveParticleAlongFrames(frames, 0,m,m);
-
+	std::vector<float*> frames = CreatePath(pointsA, 9, 500);
+	while (!x) {
+		Controller->moveParticleAlongFrames(frames, 0, m, m);
+	}
 	printf("Done");
 	WaitforX();
 

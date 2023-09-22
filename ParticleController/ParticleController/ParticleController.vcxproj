@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.props" Condition="Exists('..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -104,13 +105,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(LIBS_HOME)\include\GSPAT_SolverV2;$(LIBS_HOME)\include\AsierInho;$(LIBS_HOME)\include\GS_PAT;$(LIBS_HOME)\include\GSPAT_SolverIBP</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(LIBS_HOME)\include\GSPAT_SolverV4;$(LIBS_HOME)\include\GSPAT_SolverV2;$(LIBS_HOME)\include\AsierInho;$(LIBS_HOME)\include\GS_PAT;$(LIBS_HOME)\include\GSPAT_SolverIBP;$(LIBS_HOME)\include\BeadDetector;$(LIBS_HOME)\include\opencv340\build\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(LIBS_HOME)\lib\AsierInho;$(LIBS_HOME)\lib\GSPAT_SolverV2;$(LIBS_HOME)\lib\GSPAT_SolverIBP;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>AsierInho.lib;GSPAT_SolverV2.lib;GSPAT_SolverIBP.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(LIBS_HOME)\lib\AsierInho;$(LIBS_HOME)\lib\GSPAT_SolverV4;$(LIBS_HOME)\lib\GSPAT_SolverV2;$(LIBS_HOME)\lib\GSPAT_SolverIBP;$(LIBS_HOME)\lib\BeadDetector;$(LIBS_HOME)\include\opencv340\build\x64\vc15\bin;$(LIBS_HOME)\include\opencv340\build\x64\vc15\lib;$(LIBS_HOME)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>AsierInho.lib;GSPAT_SolverV2.lib;GSPAT_SolverV4.lib;GSPAT_SolverIBP.lib;BeadDetector.lib;opencv_world340d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,7 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="circles.cpp" />
+    <ClCompile Include="GrabBeads.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="ParticleController.cpp" />
     <ClCompile Include="Shapes.cpp" />
@@ -140,7 +141,18 @@
     <ClInclude Include="ParticleController.hpp" />
     <ClInclude Include="Shapes.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.targets" Condition="Exists('..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.props'))" />
+    <Error Condition="!Exists('..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\vcpkg.C.vcpkg.1.0.0\build\native\vcpkg.C.vcpkg.targets'))" />
+  </Target>
 </Project>
