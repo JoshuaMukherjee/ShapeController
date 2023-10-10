@@ -10,7 +10,7 @@ int main() {
 
 	const int N = 3;
 	ParticleController* Controller = new ParticleController(N);
-
+	
 	
 	float m[16 * N];
 	getIdentity(N, m);

@@ -152,6 +152,7 @@
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="ParticleController.cpp" />
     <ClCompile Include="ParticleControllerBEM.cpp" />
+    <ClCompile Include="ParticleControllerV2.cpp" />
     <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="Helper.hpp" />
     <ClInclude Include="ParticleController.hpp" />
     <ClInclude Include="ParticleControllerBEM.hpp" />
+    <ClInclude Include="ParticleControllerV2.hpp" />
     <ClInclude Include="Shapes.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

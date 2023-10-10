@@ -30,7 +30,10 @@
     <ClCompile Include="ParticleControllerBEM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BEMgifMove.cpp">
+    <ClCompile Include="GSPATgifMove.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleControllerV2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ParticleControllerBEM.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleControllerV2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
