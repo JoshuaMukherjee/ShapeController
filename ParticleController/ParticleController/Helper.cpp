@@ -17,8 +17,6 @@ void WaitforX() {
 	}
 }
 
- 
-
 void printArray(float data[]) {
 	using namespace std;
 	for (int i = sizeof(data) / sizeof(data[0]); i >= 0; i--) {

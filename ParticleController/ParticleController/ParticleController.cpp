@@ -1,6 +1,7 @@
 #include "ParticleController.hpp"
 #include "Helper.hpp"
 #include "Shapes.hpp"
+#include "Camera.hpp";
 
 
 
@@ -43,6 +44,8 @@ ParticleController::ParticleController(int particleNin, int B1, int B2) {
 	void ParticleController::printPos(int N) {
 		printf("Particle %d at %f, %f, %f \n", N, positions[4 * N], positions[4 * N + 1], positions[4 * N + 2]);
 	}
+
+
 
 	void ParticleController::UpdateBoard(float m1[], float m2[]) {
 		
@@ -97,40 +100,9 @@ ParticleController::ParticleController(int particleNin, int B1, int B2) {
 
 	}
 
-
-	std::vector<cv::Point3d> ParticleController::GetParticleLocationsCamera(int N, float stageHeight, float corner) {
-
-		float     p1[] = { -corner, -corner,  stageHeight },
-			p2[] = { corner, -corner, stageHeight },
-			p3[] = { corner,  corner, stageHeight },
-			p4[] = { -corner,  corner, stageHeight };
-
-		BeadDetector& detector = BeadDetector::instance(p1, p2, p3, p4);
-		detector.startDetection();
-		std::vector<cv::Point3d> detectedPositions = getNPoints(detector, N);
-
-		return detectedPositions;
-	}
-
-	std::vector<cv::Point3d> getNPoints(BeadDetector& detector, int N) {
-		static const int minThres = 10, maxThres = 160, thresStep = 10;
-		int threshold = minThres;
-		printf("Place Bead...\n");
-		WaitforX();
-		while (1) {
-			detector.setThreshold(threshold);
-			std::vector<cv::Point3d> currentBeads = detector.getCurrentBeads();
-			if (currentBeads.size() == N) {
-				return currentBeads;
-			}
-			if (threshold == maxThres) threshold = minThres;
-			else threshold += thresStep;
-		}
-	}
-
 	void ParticleController::moveParticlesToStart(float target[][3], float* m, int N, float stageHeight, int f1, int f2) {
 
-		std::vector<cv::Point3d> detectedPositions = this->GetParticleLocationsCamera(N, stageHeight);
+		std::vector<cv::Point3d> detectedPositions = GetParticleLocationsCamera(N, stageHeight);
 		float particle[3];
 		float tempPoint[3];
 
