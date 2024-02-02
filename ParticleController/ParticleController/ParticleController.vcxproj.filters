@@ -18,9 +18,6 @@
     <ClCompile Include="ParticleController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shapes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Helper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,10 +27,13 @@
     <ClCompile Include="ParticleControllerBEM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GSPATgifMove.cpp">
+    <ClCompile Include="ParticleControllerV2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleControllerV2.cpp">
+    <ClCompile Include="Shapes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BEMExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

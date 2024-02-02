@@ -147,8 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BEMExample.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="GSPATgifMove.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="ParticleController.cpp" />
     <ClCompile Include="ParticleControllerBEM.cpp" />

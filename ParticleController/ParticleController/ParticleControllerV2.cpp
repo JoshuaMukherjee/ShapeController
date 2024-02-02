@@ -20,15 +20,15 @@ ParticleControllerV2::ParticleControllerV2(int particleNin, int* boardIDsIn, flo
 	positions = new float[4 * particleN];
 	amplitude = new float[particleN];
 	for (int i = 0; i < particleN; i++) {
-		amplitude[i] = 10000;
+		amplitude[i] = 10000.0f;
 	}
 
 	AsierInho_V2::RegisterPrintFuncs(printV2, printV2, printV2);
 	driver = AsierInho_V2::createAsierInho();
 	if (!driver->connect(numBoards, boardIDs, matBoardToWorld))
-		printf("Failed to connect to board.");
+		printf("Failed to connect to board. ParticleControllerV2");
 
-	solver = GSPAT_V2::createSolver(512);
+	solver = GSPAT_V2::createSolver(numTransducers);
 	//solver = GSPAT_V4::createSolver(512);
 
 	float* transducerPositions = new float[numTransducers * 3];

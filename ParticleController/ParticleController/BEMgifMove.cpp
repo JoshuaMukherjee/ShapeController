@@ -19,14 +19,18 @@ void main() {
 
 	const int N = 1;
 	bool USE_DEVICE = false;
+	int POINTS_PER_TRAP = 2;
 
-	ParticleControllerBEM* controller = new ParticleControllerBEM(N, boardIDs, matBoardToWorld, USE_DEVICE);
+	ParticleControllerBEM* controller = new ParticleControllerBEM(
+		N, boardIDs, matBoardToWorld, 
+		USE_DEVICE, 1, true, 2, 200, POINTS_PER_TRAP
+	);
 
-	std::string reflector = "media/BEMFiles/flat-lam4_9.bin"; //Output of createReflector();
+	std::string reflector = "media/BEMFiles/flat-lam6.bin"; //Output of createReflector();
 
 	bool CREATE_REFLECTOR = false;
 	if (CREATE_REFLECTOR) {
-		std::string fIn = "media/BEMFiles/flat-lam4.stl"; //Input of createReflector();
+		std::string fIn = "media/BEMFiles/flat-lam6.stl"; //Input of createReflector();
 		glm::mat4 transform = glm::translate(glm::mat4(1.f), glm::vec3(0, 0.09, 0.12)) * glm::rotate(glm::mat4(1.f), glm::radians(-90.f), glm::vec3(1, 0, 0));
 
 		controller->createReflector(fIn, reflector, transform);
@@ -39,7 +43,7 @@ void main() {
 	int imgRes[] = { 256,256 };
 
 	std::vector<glm::vec3> pointPositions(N);
-	float max = 0.082;
+	float max = 0.09;
 	float min = 0.04;
 	pointPositions[0] = glm::vec3(0, min, 0.09);
 
