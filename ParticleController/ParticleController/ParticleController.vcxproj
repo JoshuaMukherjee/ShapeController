@@ -147,12 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BEMExample.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="ParticleController.cpp" />
     <ClCompile Include="ParticleControllerBEM.cpp" />
     <ClCompile Include="ParticleControllerV2.cpp" />
+    <ClCompile Include="runFromFilesNew 1.cpp" />
     <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -149,15 +149,23 @@ void ParticleControllerBEM::setParticleLocations(std::vector<glm::vec3> pointPos
 	}
 }
 
-GSPAT::Solution* ParticleControllerBEM::computeSolutionAndMove(float* m1, float* m2) {
+GSPAT::Solution* ParticleControllerBEM::computeSolutionAndMove(float* m1, float* m2, bool print_phases) {
 	//let's compute a solution and update it to the board connected
 	GSPAT::Solution* solution = solver->createSolution(numPoints, numGeometries, phaseOnly, positionBuffer, targetBuffer, m1, m2);
 	solver->compute(solution);
 	unsigned char* msg;
 	solution->finalMessages(&msg);
+	float* phases = solution->finalArrayPhases();
+	if (print_phases) {
+		for (int s = 0; s < 256; s++) {
+			printf("%f,", phases[s]);
+		}
+		printf("\n");
+	}
 	if (USE_DEVICE) {
 		for (int s = 0; s < 16; s++)//Fill FPGA buffers so update is processed directly
 			driver->updateMessage(msg);
+			
 	}
 
 	return solution;

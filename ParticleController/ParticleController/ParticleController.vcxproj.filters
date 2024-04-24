@@ -33,7 +33,7 @@
     <ClCompile Include="Shapes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BEMExample.cpp">
+    <ClCompile Include="runFromFilesNew 1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

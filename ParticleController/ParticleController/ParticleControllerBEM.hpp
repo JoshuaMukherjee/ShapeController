@@ -59,7 +59,7 @@ public:
 	void loadReflector(std::string file);
 	void close();
 	void setParticleLocations(std::vector<glm::vec3> pointPositions, std::vector<float> targetAmplitudes);
-	GSPAT::Solution* computeSolutionAndMove(float* m1, float* m2);
+	GSPAT::Solution* computeSolutionAndMove(float* m1, float* m2, bool print_phases = false);
 	void Visualise(GSPAT::Solution* solution, char* fout, float A[], float B[], float C[], int imageSize[], bool show = true);
 
 };

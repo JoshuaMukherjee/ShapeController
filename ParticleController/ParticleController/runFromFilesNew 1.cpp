@@ -176,16 +176,18 @@ int main(void) {
 	int* phaseDelays = new int[numTransducers];
 	int numDiscreteLevels;
 	driver->readParameters(transducerPositions, transducerNormals, mappings, phaseDelays, amplitudeAdjust, &numDiscreteLevels);
-	
+	//for (int i=0; i < 512*3; i+=3) {
+		//printf("%f,%f,%f\n",transducerPositions[i], transducerPositions[i+1], transducerPositions[i+2]);
+	//}
 
 	float* phaseBuffer, * amplitudeBuffer;
 	int numGeometries;
 
-	//bool simplyReadPhases = true;
+	bool simplyReadPhases = true;
 	bool loop = false;
 	printf("Running...");
 	if (simplyReadPhases) {
-		readTransducerInfo("JoshCSVs/TinySphere.csv", numGeometries, numTransducers, phaseBuffer);
+		readTransducerInfo("JoshCSVs/ManyFrames.csv", numGeometries, numTransducers, phaseBuffer);
 	}
 
 	unsigned char* messages = new unsigned char[2 * numGeometries * numTransducers];
@@ -197,7 +199,12 @@ int main(void) {
 			disc->correctPhasesShift(phases_disc, amplitudes_disc);
 		}
 		else {
-			memset(amplitudes_disc, 64, numTransducers * sizeof(unsigned char));
+			int relative_amp = 1.0;
+			if (relative_amp < 1.0) {
+				printf("RELATIVE AMPLITUDE SET TO LESS THAN 1");
+			}
+			unsigned char disc_amp = disc->_discretizeAmplitude(relative_amp);
+			memset(amplitudes_disc, disc_amp, numTransducers * sizeof(unsigned char));
 		}
 		memcpy(&messages[g * 2 * numTransducers + 0], &phases_disc[0], (numTransducers / 2) * sizeof(unsigned char));
 		memcpy(&messages[g * 2 * numTransducers + numTransducers / 2], &amplitudes_disc[0], (numTransducers / 2) * sizeof(unsigned char));
